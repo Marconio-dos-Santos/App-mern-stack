@@ -1,5 +1,6 @@
 const services = [
     {
+      id: '1',
       name: 'NAIL • SHAINE',
       description: 'Work from home accessories',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
@@ -7,6 +8,7 @@ const services = [
       href: '#',
     },
     {
+      id: '2',
       name: 'BEAUTY • PEDICURE',
       description: 'Journals and note-taking',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
@@ -14,6 +16,7 @@ const services = [
       href: '#',
     },
     {
+      id: '3',
       name: 'POLISH • TREATHMENT',
       description: 'Daily commute essentials',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
@@ -21,6 +24,7 @@ const services = [
       href: '#',
     },
     {
+      id: '4',
       name: 'COLOR • HYDRATATION',
       description: 'Daily commute essentials',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',

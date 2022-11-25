@@ -1,4 +1,4 @@
-
+import HomeScreen from "./pages/HomeScreen"
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
        <a href='/'>Home</a>
       </header>
       <main>
-        Main
+        <HomeScreen />
       </main>
     </div>
   );
