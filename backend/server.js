@@ -1,13 +1,14 @@
 import express from 'express'
 import dotenv from 'dotenv'
-const port = process.env.PORT || 2121
+import data from './data.js'
 
 dotenv.config()
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('Hello World!!')
+    res.send(data)
 })
+const port = process.env.PORT || 2121
 app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}, you better catch it!`);
 });
