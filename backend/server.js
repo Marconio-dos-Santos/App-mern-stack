@@ -5,7 +5,7 @@ import data from './data.js'
 dotenv.config()
 const app = express()
 
-app.get('/', (req, res) => {
+app.get('/api/services', (req, res) => {
     res.send(data)
 })
 const port = process.env.PORT || 2121
