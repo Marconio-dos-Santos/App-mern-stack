@@ -1,25 +1,28 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Products from '../components/Products'
 
 const HomeScreen = () => {
     //definir state para salvar dados do backend
-    const [services, setServices] = useState([])
+    const [products, setProducts] = useState([])
     useEffect(() =>{
         const fetchDataServices = async () => {
-            const result = await axios.get('/api/services')
-            setServices(result.data)
+            const result = await axios.get('/api/products')
+            setProducts(result.data)
           }
           fetchDataServices()
-          console.log(services)
     }, [])
   return (
-    <div>
-      {services.map((service) => (
-        <div key={service.id}>
-          <img src={service.imageSrc} alt={service.imageAlt} />
-        </div>
-      ))}
-    </div>
+    <section>
+      <h1>Produtos</h1>
+      <div className="products">
+          {products.map((product) => (
+            <div key={product.slug} className="product">
+              <Products product={product} />
+            </div>
+          ))}
+      </div>
+      </section>
   )
 }
 
