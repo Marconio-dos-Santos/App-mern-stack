@@ -46,13 +46,13 @@ const HomeScreen = () => {
           ) : error ? (
             <div>{error}</div>
           ) : (
-          <div>
+          <>
             {products.map((product) => (
               <div key={product.slug} className="product">
                 <Products product={product} />
               </div>
             ))}
-          </div>
+          </>
         )}
       </div>
       </section>
