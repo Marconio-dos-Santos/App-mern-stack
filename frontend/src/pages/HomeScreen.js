@@ -1,6 +1,8 @@
 import { useEffect, useReducer } from 'react'
 import axios from 'axios'
-import Products from '../components/Products'
+import Product from '../components/Product'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 //função de gerenciamento 'state' do componente
 const reducer = (state, action) => {
@@ -47,11 +49,13 @@ const HomeScreen = () => {
             <div>{error}</div>
           ) : (
           <>
-            {products.map((product) => (
-              <div key={product.slug} className="product">
-                <Products product={product} />
-              </div>
-            ))}
+            <Row>
+              {products.map((product) => (
+                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                    <Product product={product} />
+                </Col>
+              ))}
+            </Row>
           </>
         )}
       </div>
