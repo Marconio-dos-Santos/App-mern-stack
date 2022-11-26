@@ -1,13 +1,15 @@
+import { Link }from "react-router-dom"
+
 function Products({ product }) {
   return (
     <div>
-        <a href={`/product/${product.slug}`}>
+        <Link to={`/product/${product.slug}`}>
           <img src={product.image} className="card-img-top" alt={product.name} />
-        </a>
+        </Link>
         <div>
-            <a href={`/product/${product.slug}`}>
+            <Link to={`/product/${product.slug}`}>
               <p>{product.name}</p>
-            </a>
+            </Link>
             <p>{product.price}</p>
             <button>Add to Cart</button>
         </div>
