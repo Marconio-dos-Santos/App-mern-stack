@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*{
+  text-decoration: none;
+}
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +19,7 @@ body {
 .product {
   border: 1px #40404040 solid;
   margin: 1rem;
+  text-align: center;
 }
 
 .product img {
