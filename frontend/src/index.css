@@ -12,9 +12,6 @@ body {
 main {
   flex: 1;
 }
-div > .card-body {
-  padding: 24px 0px;
-}
 .products-container{
   display: flex;
   flex-wrap: wrap;
