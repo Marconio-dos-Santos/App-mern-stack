@@ -42,7 +42,7 @@ const HomeScreen = () => {
   return (
     <section>
       <h1>Produtos</h1>
-      <div className="products">
+      <div className="products-container">
         {loading ? (
             <div>Loading...</div>
           ) : error ? (
@@ -51,7 +51,7 @@ const HomeScreen = () => {
           <>
             <Row>
               {products.map((product) => (
-                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                <Col key={product.slug} xs={6} sm={6} md={4} lg={4} className="mb-3">
                     <Product product={product} />
                 </Col>
               ))}

@@ -7,11 +7,12 @@ const HeroBanner = () => {
       <div>
         <p className="beats-solo">SMALL TEXT</p>
         <h3>HeroBanner</h3> 
-        <img src="" alt="img-banner" className="hero-banner-image" />
+        <h1>Great</h1>
+        <img src={'/images/headphones_c_1.webp'} alt="img-banner" className="hero-banner-image" />
 
         <div>
             <Link to={`/product/ID`}>
-                <Button type="button">BUTTON TEXT</Button>
+            <Button type="button">BUTTON TEXT</Button>
             </Link>
             <div className="desc">
                 <h5>Description</h5>
