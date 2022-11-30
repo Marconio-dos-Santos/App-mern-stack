@@ -8,6 +8,9 @@ import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Rating from "../components/Rating";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import { getError } from "../utils";
 
 //função de gerenciamento 'state' do componente
 const reducer = (state, action) => {
@@ -41,7 +44,7 @@ const ProductScreen = () => {
           //atualizando 'state'
           dispatch({ type: "FETCH_SUCCESS", payload: result.data });
         } catch (err) {
-          dispatch({ type: "FETCH_FAIL", payload: err.message });
+          dispatch({ type: "FETCH_FAIL", payload: getError(err) });
         }
       }
       fetchDataServices()
@@ -50,9 +53,9 @@ const ProductScreen = () => {
     
 
     return loading ? (
-      <div>Loading</div>
+      <LoadingBox />
     ) : error ? (
-      <div>{error}</div>
+      <MessageBox variant="danger">{error}</MessageBox>
     ) : (
       <div>
         <Row>

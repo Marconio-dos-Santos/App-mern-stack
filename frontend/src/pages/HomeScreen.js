@@ -3,6 +3,8 @@ import axios from 'axios'
 import Product from '../components/Product'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import LoadingBox from '../components/LoadingBox'
+import MessageBox from '../components/MessageBox'
 
 //função de gerenciamento 'state' do componente
 const reducer = (state, action) => {
@@ -44,9 +46,9 @@ const HomeScreen = () => {
       <h1>Produtos</h1>
       <div className="products-container">
         {loading ? (
-            <div>Loading...</div>
+            <LoadingBox />
           ) : error ? (
-            <div>{error}</div>
+            <MessageBox variant="danger">{error}</MessageBox>
           ) : (
           <>
             <Row>
