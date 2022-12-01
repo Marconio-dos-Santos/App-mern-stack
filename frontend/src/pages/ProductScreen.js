@@ -55,8 +55,21 @@ const ProductScreen = () => {
   //renomeia dispatch para ctxDispatch para distinguir do componente atual em reducer
   //useContext da acesso ao state e permição de modificar usando ctxDispatch
   const { state, dispatch: ctxDispatch } = useContext(Store);
-    const addToCartHandler = () => {
-      ctxDispatch({type: 'CART_ADD_ITEM', payload: {...product, quantity: 1}})
+  const { cart } = state;
+    const addToCartHandler = async () => {
+      //verifica se o produto ja existe no carrinho
+      const existItem = cart.cartItems.find((x) => x._id === product._id)
+      //se existir adiciona + 1 se não atribuiu o valor de 1
+      const quantity = existItem ? existItem.quantity + 1 : 1;
+      //busca os dados do produto pelo seu id
+      const { data } = await axios.get(`/api/products/${product._id}`)
+      //verifica se o estoque do produto é menor que a quantidade no carrinho
+      if(data.countInStock < quantity){
+        window.alert('Desculpe. Produto sem estoque')
+        return
+      }
+      //adiciona o produto ao carrinho + quantidade atualizada
+      ctxDispatch({type: 'CART_ADD_ITEM', payload: {...product, quantity}})
     }
     return loading ? (
       <LoadingBox />

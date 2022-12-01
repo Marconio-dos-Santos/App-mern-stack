@@ -22,7 +22,8 @@ const Header = () => {
                   Cart
                   {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
-                        {cart.cartItems.length}
+                        {/*soma a quantidade de items dos produtos no carrinho */}
+                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                       </Badge>
                     )}
                 </Link>
