@@ -1,6 +1,8 @@
 import express from 'express'
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
+import seedRouter from "./routes/seedRouter.js";
+import productRouter from "./routes/productRouter.js";
 import data from './data.js'
 
 dotenv.config()// permite que você traga variaveis de ambiente ocultas
@@ -17,25 +19,10 @@ mongoose
 //Cria uma aplicação express
 const app = express()
 
-app.get('/api/products', (req, res) => {
-    res.send(data.products)
-})
-app.get('/api/products/slug/:slug', (req, res) => {
-    const item = data.products.find(item => item.slug === req.params.slug);
-    if(item) {
-      res.send(item)
-    }else {
-      res.status(404).send({message: "produto não encontrado"})
-    }
-})
-app.get('/api/products/:id', (req, res) => {
-    const item = data.products.find(item => item._id === req.params.id);
-    if(item) {
-      res.send(item)
-    }else {
-      res.status(404).send({message: "produto não encontrado"})
-    }
-})
+app.use("/api/seed", seedRouter); //"rota opcional" caso queira uma opção rapida para cadastrar usuario e alguns produtos em um novo banco de dados
+app.use("/api/products", productRouter); // rota para exibir os produtos
+
+
 const port = process.env.PORT || 2121
 app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}, you better catch it!`);
