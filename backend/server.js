@@ -1,8 +1,20 @@
 import express from 'express'
+import mongoose from "mongoose";
 import dotenv from 'dotenv'
 import data from './data.js'
 
-dotenv.config()
+dotenv.config()// permite que você traga variaveis de ambiente ocultas
+
+// Conectar no Banco de dados
+mongoose
+  .connect(process.env.DB_STRING)
+  .then(() => {
+    console.log("connected to db");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+//Cria uma aplicação express
 const app = express()
 
 app.get('/api/products', (req, res) => {
