@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -28,6 +28,7 @@ const reducer = (state, action) => {
 };
 
 const ProductScreen = () => {
+  const navigate = useNavigate()
   const params = useParams()
   const { slug } = params
   //useReducer Hook, inicial state e dispatch metodo para atualizar o state
@@ -69,7 +70,8 @@ const ProductScreen = () => {
         return
       }
       //adiciona o produto ao carrinho + quantidade atualizada
-      ctxDispatch({type: 'CART_ADD_ITEM', payload: {...product, quantity}})
+      ctxDispatch({type: 'CART_ADD_ITEM', payload: {...product, quantity}});
+      navigate('/cart')
     }
     return loading ? (
       <LoadingBox />

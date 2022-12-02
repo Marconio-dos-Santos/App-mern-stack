@@ -39,6 +39,9 @@ main {
 .img-large {
   max-width: 100%;
 }
+.img-thumbnail {
+  height: 100px !important;
+}
 .product-name {
   font-weight: 500;
   text-decoration: none;
