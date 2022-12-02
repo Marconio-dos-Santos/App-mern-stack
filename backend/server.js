@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv'
 import seedRouter from "./routes/seedRouter.js";
 import productRouter from "./routes/productRouter.js";
-import data from './data.js'
 
 dotenv.config()// permite que você traga variaveis de ambiente ocultas
 
