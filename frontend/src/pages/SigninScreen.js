@@ -1,10 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Store } from "../Store";
+import { getError } from "../utils";
 
 const SigninScreen = () => {
   const navigate = useNavigate(); //react router dom hook
@@ -34,7 +36,7 @@ const SigninScreen = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate(redirect || "/");
     } catch (err) {
-      console.log("Email ou Senha invalido");
+      toast.error(getError(err));
     }
   };
   //verifica userInfo e redireciona para / no caso ProductsScreen não permitindo usuario logado de ver sinningScreen

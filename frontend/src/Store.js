@@ -3,6 +3,11 @@ import { createContext, useReducer } from "react";
 export const Store = createContext();
 //define um inicial state
 const initialState = {
+  //se userInfo existir em localStorage
+  userInfo: localStorage.getItem("userInfo")
+    ? //usa JSON.parse para converter userInfo em JavaScript object
+      JSON.parse(localStorage.getItem("userInfo"))
+    : null, //se não existir defina para null
   cart: {
     //se cartItems existir em localStorage
     cartItems: localStorage.getItem("cartItems")
@@ -32,13 +37,23 @@ function reducer(state, action) {
         const cartItems = state.cart.cartItems.filter(
           (item) => item._id !== action.payload._id
         );
-      //usa JSON.stringify para converter cartItems em string e salvar cartItems atualizado em localStorage
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
-      return { ...state, cart: { ...state.cart, cartItems } };
+        //usa JSON.stringify para converter cartItems em string e salvar cartItems atualizado em localStorage
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        return { ...state, cart: { ...state.cart, cartItems } };
       }
-      default: 
+      //atualiza userInfo com os dados recebidos do backend
+      case "USER_SIGNIN":
+        return { ...state, userInfo: action.payload };
+        case "USER_SIGNOUT":
+      return {
+        ...state,
+        userInfo: null,
+        cart: { cartItems: [] },
+      };
+        default: 
         return state;
     }
+    
 }
 
 

@@ -38,7 +38,7 @@ const CartScreen = () => {
     };
     //signin verificar se ja esta logado se sim redirect recebe shipping e redireciona
     const checkoutHandler = () => {
-        navigate("/signin?redirect=/shipping");
+      navigate("/signin?redirect=/shipping");
     };
 return (
     <div>
@@ -52,7 +52,7 @@ return (
                     ) : (
                     <ListGroup>
                       {cartItems.map((item) => (
-                        <ListGroup.Item key={cartItems._id}>
+                        <ListGroup.Item key={item._id}>
                           <Row className="align-items-center">
                             <Col className="img-thumbnail-container"  md={4}>
                               <img 

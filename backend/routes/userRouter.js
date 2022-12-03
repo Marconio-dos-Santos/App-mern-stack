@@ -15,7 +15,7 @@ router.post(
           //usa o metodo do bcrypt para comparar as senhas
           res.send({
             _id: user._id,
-            userName: user.userName,
+            name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
             token: generateToken(user),
