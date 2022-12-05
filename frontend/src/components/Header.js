@@ -18,6 +18,7 @@ const Header = () => {
     //remove dados em localStorage
     localStorage.removeItem("userInfo");
     localStorage.removeItem("shippingAddress");
+    localStorage.removeItem("paymentMethod");
   };
   return (
     <header>
