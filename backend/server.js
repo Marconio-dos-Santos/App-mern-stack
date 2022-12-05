@@ -5,7 +5,7 @@ import seedRouter from "./routes/seedRouter.js";
 import userRouter from "./routes/userRouter.js";
 import productRouter from "./routes/productRouter.js";
 
-dotenv.config()// permite que você traga variaveis de ambiente ocultas
+dotenv.config({ path: "./config/.env" })// permite que você traga variaveis de ambiente ocultas
 
 // Conectar no Banco de dados
 mongoose
