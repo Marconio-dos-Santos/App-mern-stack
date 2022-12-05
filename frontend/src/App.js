@@ -9,6 +9,7 @@ import CartScreen from "./pages/CartScreen";
 import HomeScreen from "./pages/HomeScreen"
 import ProductScreen from "./pages/ProductScreen";
 import SigninScreen from "./pages/SigninScreen";
+import ShippingAddressScreen from "./pages/ShippingAddressScreen";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
         <main>
           <Container className="mt-3">
             <Routes>
-              <Route path="/signin" element={<SigninScreen />} />
-              <Route path="/" element={<HomeScreen />} />
-              <Route path="/cart" element={<CartScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
+              <Route path="/cart" element={<CartScreen />} />
+              <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/shipping" element={<ShippingAddressScreen />} />
+              <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
         </main>

@@ -9,6 +9,11 @@ const initialState = {
       JSON.parse(localStorage.getItem("userInfo"))
     : null, //se não existir defina para null
   cart: {
+    //se shippingAddress existir em localStorage
+    shippingAddress: localStorage.getItem("shippingAddress")
+      ? //usa JSON.parse para converter shippingAddress em JavaScript object
+        JSON.parse(localStorage.getItem("shippingAddress"))
+      : {}, //se não existir defina como obejeto vazio
     //se cartItems existir em localStorage
     cartItems: localStorage.getItem("cartItems")
     ? //usa JSON.parse para converter cartItems em JavaScript object
@@ -48,8 +53,13 @@ function reducer(state, action) {
       return {
         ...state,
         userInfo: null,
-        cart: { cartItems: [] },
+        cart: { cartItems: [], shippingAddress: {} },
       };
+      case "SAVE_SHIPPING_ADDRESS":
+        return {
+          ...state,
+          cart: { ...state.cart, shippingAddress: action.payload },
+        };
         default: 
         return state;
     }

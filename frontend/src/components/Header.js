@@ -17,6 +17,7 @@ const Header = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
     //remove dados em localStorage
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("shippingAddress");
   };
   return (
     <header>
