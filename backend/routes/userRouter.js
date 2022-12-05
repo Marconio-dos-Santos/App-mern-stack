@@ -25,5 +25,23 @@ router.post(
       }
       res.status(401).send({ message: "Email ou Senha invalido" }); // mensagem de erro se o usuario não existir
     })
+    
 );
+router.post(
+  "/signup",
+  expressAsyncHandler( async (req, res) => {
+    const newUser = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password),
+    }); // cria um objeto usando os dados da requisição enviada pelo corpo do formulario e usa o metodo .hashSync na senha antes de enviar para banco de dados
+    const user = await newUser.save(); // salva no banco de dados o novo usuario
+    res.send({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: generateToken(user),
+    }); // e envia para o Frontend
+  }));
 export default router;
