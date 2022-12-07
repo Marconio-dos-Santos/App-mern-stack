@@ -24,6 +24,9 @@ const app = express()
 app.use(express.json()); // diz para aplicação para usar o metodo Express JSON para pegar o objeto e transformar em uma string JSON
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/api/keys/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+});
 
 app.use("/api/seed", seedRouter); //"rota opcional" caso queira uma opção rapida para cadastrar usuario e alguns produtos em um novo banco de dados
 app.use("/api/products", productRouter); // rota para exibir os produtos
