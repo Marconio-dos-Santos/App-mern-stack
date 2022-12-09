@@ -27,42 +27,45 @@ const Header = () => {
               <LinkContainer to="/">
                 <Navbar.Brand>APP</Navbar.Brand>
               </LinkContainer>
-              <Nav className="me-auto">
-                <Link to="/cart" className="nav-link">
-                  Cart
-                  {cart.cartItems.length > 0 && (
-                      <Badge pill bg="danger">
-                        {/*soma a quantidade de items dos produtos no carrinho */}
-                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                      </Badge>
-                    )}
-                </Link>
-                {userInfo ? (
-                    <NavDropdown
-                      title={userInfo.name}
-                      id="basic-nav-dropdown"
-                    >
-                      <LinkContainer to="/profile">
-                        <NavDropdown.Item>Perfil</NavDropdown.Item>
-                      </LinkContainer>
-                      <LinkContainer to="/orderhistory">
-                        <NavDropdown.Item>Historico</NavDropdown.Item>
-                      </LinkContainer>
-                      <NavDropdown.Divider />
-                      <Link
-                        className="dropdown-item"
-                        to="#signout"
-                        onClick={signoutHandler}
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto w-100  justify-content-end">
+                  <Link to="/cart" className="nav-link">
+                    Cart
+                    {cart.cartItems.length > 0 && (
+                        <Badge pill bg="danger">
+                          {/*soma a quantidade de items dos produtos no carrinho */}
+                          {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                        </Badge>
+                      )}
+                  </Link>
+                  {userInfo ? (
+                      <NavDropdown
+                        title={userInfo.name}
+                        id="basic-nav-dropdown"
                       >
-                        Sair
+                        <LinkContainer to="/profile">
+                          <NavDropdown.Item>Perfil</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/orderhistory">
+                          <NavDropdown.Item>Historico</NavDropdown.Item>
+                        </LinkContainer>
+                        <NavDropdown.Divider />
+                        <Link
+                          className="dropdown-item"
+                          to="#signout"
+                          onClick={signoutHandler}
+                        >
+                          Sair
+                        </Link>
+                      </NavDropdown>
+                    ) : (
+                      <Link className="nav-link" to="/signin">
+                        Entrar
                       </Link>
-                    </NavDropdown>
-                  ) : (
-                    <Link className="nav-link" to="/signin">
-                      Entrar
-                    </Link>
-                  )}
-              </Nav>
+                    )}
+                </Nav>
+              </Navbar.Collapse>
             </Container>
           </Navbar>
     </header>
