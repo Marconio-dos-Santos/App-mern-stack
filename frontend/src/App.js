@@ -16,6 +16,9 @@ import PlaceOrderScreen from "./pages/PlaceOrderScreen";
 import OrderScreen from "./pages/OrderScreen";
 import OrderHistoryScreen from "./pages/OrderHistoryScreen";
 import ProfileScreen from "./pages/ProfileScreen";
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardScreen from "./pages/DashboardScreen";
+import AdminRoute from "./components/AdminRoute";
 
 function App() {
   return (
@@ -31,12 +34,33 @@ function App() {
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/signup" element={<SignupScreen />} />
-              <Route path="/profile" element={<ProfileScreen />} />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <ProfileScreen />
+                </ProtectedRoute>
+              } />
               <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/placeorder" element={<PlaceOrderScreen />} />
-              <Route path="/order/:id" element={<OrderScreen />}></Route>
-              <Route path="orderhistory" element={<OrderHistoryScreen />}></Route>
+              <Route path="/order/:id" element={
+                <ProtectedRoute>
+                  <OrderScreen />
+                </ProtectedRoute>}>  
+              </Route>
+              <Route path="orderhistory" element={
+                <ProtectedRoute>
+                  <OrderHistoryScreen />
+                </ProtectedRoute>}>
+              </Route>
               <Route path="/payment" element={<PaymentMethodScreen />} />
+               {/* Admin Routes */}
+               <Route
+                path="/admin/dashboard"
+                element={
+                  <AdminRoute>
+                    <DashboardScreen />
+                  </AdminRoute>
+                }
+              ></Route>
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>

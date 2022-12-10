@@ -33,8 +33,8 @@ function Product({ product }) {
     });
   };
   return (
-    <Card border='light' >
-      <Link className="product-card" to={`/product/${product.slug}`}>
+    <Card border='light product-card' >
+      <Link className="" to={`/product/${product.slug}`}>
         <img src={product.image} className="card-img-top product-image" alt={product.name} />
       </Link>
       <Card.Body className="card-body">
