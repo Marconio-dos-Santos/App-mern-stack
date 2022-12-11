@@ -50,7 +50,7 @@ return (
                       Carrinho vazio. <Link to='/'>Inicio</Link>
                     </MessageBox>
                     ) : (
-                    <ListGroup>
+                    <ListGroup variant='flush'>
                       {cartItems.map((item) => (
                         <ListGroup.Item key={item._id}>
                           <Row className="align-items-center">
@@ -84,7 +84,7 @@ return (
                                 onClick={() => removeItemHandler(item)}
                                 variant="light"
                                 disabled={item.quatity === 1}
-                              >
+                              >Remover{' '}
                                 <i className="fas fa-trash"></i>
                               </Button>
                             </Col>

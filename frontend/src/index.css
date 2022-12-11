@@ -43,7 +43,7 @@ main {
   max-width: 100%;
 }
 .img-thumbnail {
-  height: 100px !important;
+  height: 160px !important;
 }
 .product-name {
   font-weight: 500;
