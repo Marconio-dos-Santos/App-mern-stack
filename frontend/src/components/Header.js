@@ -23,7 +23,7 @@ const Header = () => {
   };
   return (
     <header>
-          <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar className="nav-section" variant="dark" bg="dark" expand="lg">
             <Container>
               <LinkContainer to="/">
                 <Navbar.Brand>APP</Navbar.Brand>
@@ -42,6 +42,7 @@ const Header = () => {
                   </Link>
                   {userInfo ? (
                       <NavDropdown
+                        menuVariant="dark"
                         title={userInfo.name}
                         id="basic-nav-dropdown"
                       >
@@ -66,7 +67,7 @@ const Header = () => {
                       </Link>
                     )}
                     {userInfo && userInfo.isAdmin && (
-                    <NavDropdown title="Admin" id="admin-nav-dropdown">
+                    <NavDropdown title="Admin" id="admin-nav-dropdown" menuVariant="dark">
                       <LinkContainer to="/admin/dashboard">
                         <NavDropdown.Item>Dashboard</NavDropdown.Item>
                       </LinkContainer>

@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
+import HeroBanner from '../components/HeroBanner'
 
 //função de gerenciamento 'state' do componente
 const reducer = (state, action) => {
@@ -43,8 +44,9 @@ const HomeScreen = () => {
     }, [])
   return (
     <section>
+      <HeroBanner />
       <h1>Produtos</h1>
-      <div className="products-container">
+      <div className="products-container container">
         {loading ? (
             <LoadingBox />
           ) : error ? (

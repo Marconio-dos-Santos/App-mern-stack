@@ -41,7 +41,7 @@ const CartScreen = () => {
       navigate("/signin?redirect=/shipping");
     };
 return (
-    <div>
+    <div className="container">
         <h1>Carrinho</h1>
         <Row>
             <Col md={8}>
