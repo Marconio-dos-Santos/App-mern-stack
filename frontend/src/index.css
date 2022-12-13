@@ -108,7 +108,7 @@ main {
   display: flex;
   flex-direction: column;
   color: white;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   }
 
 .desc p{
@@ -146,12 +146,12 @@ main {
     height: 340px;
     background-size: cover;
   }
-  .hero-banner-image{
+  /* .hero-banner-image{
     width: 77%;
     height: 62%;
     top: -2%;
     right: -6%;
-  }
+  } */
   .hero-banner-container{
     line-height: 1.3;
     padding: 50px 25px

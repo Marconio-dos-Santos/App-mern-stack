@@ -23,7 +23,7 @@ const Header = () => {
   };
   return (
     <header>
-          <Navbar className="nav-section" variant="dark" bg="dark" expand="lg">
+          <Navbar className="nav-section" variant="dark" expand="lg">
             <Container>
               <LinkContainer to="/">
                 <Navbar.Brand>APP</Navbar.Brand>

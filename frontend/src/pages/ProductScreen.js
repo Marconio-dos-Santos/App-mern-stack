@@ -3,9 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
-import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Rating from "../components/Rating";
 import LoadingBox from "../components/LoadingBox";
@@ -78,61 +76,40 @@ const ProductScreen = () => {
     ) : error ? (
       <MessageBox variant="danger">{error}</MessageBox>
     ) : (
-      <div>
+      <div className="container mt-3">
         <Row>
           <Col md={6}>
             <img className="img-large" src={product.image} alt={product.name}></img>
           </Col>
-          <Col md={3}>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h1>{product.name}</h1>
-              </ListGroup.Item>
-              <ListGroup.Item>
+          <Col md={6} className="d-flex flex-column justify-content-evenly">
+              <div>
+                <h1 className="pb-3">{product.name}</h1>
                 <Rating
                   rating={product.rating}
                   numReviews={product.numReviews}
                 ></Rating>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                R$: {product.price.toFixed(2)}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {product.description}
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          <Col md={3}>
-            <Card>
-              <Card.Body>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>
+                </div>
+                <div>
                     <Row>
                       <Col>R$:</Col>
                       <Col>{product.price.toFixed(2)}</Col>
                     </Row>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <Row>
+                    <Row className="pb-3">
                       <Col>Status:</Col>
                       <Col>{product.countInStock > 0 ?
                       <Badge bg="success">Em Estoque</Badge>:
                       <Badge bg="danger">Sem Estoque</Badge>
                       }</Col>
                     </Row>
-                  </ListGroup.Item>
                   {product.countInStock > 0 && (
-                    <ListGroup.Item>
-                      <div className="d-grid">
+                      <div className="d-grid pb-3">
                         <Button onClick={addToCartHandler}>
                           Carrinho
                         </Button>
                       </div>
-                    </ListGroup.Item>
                   )}
-                </ListGroup>
-              </Card.Body>
-            </Card>
+                  {product.description}
+                  </div>
           </Col>
         </Row>
       </div>
