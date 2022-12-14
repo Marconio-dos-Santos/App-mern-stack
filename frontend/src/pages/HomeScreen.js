@@ -45,7 +45,7 @@ const HomeScreen = () => {
   return (
     <section>
       <HeroBanner />
-      <h1>Produtos</h1>
+      <h1>Mais vendidos</h1>
       <div className="products-container container">
         {loading ? (
             <LoadingBox />

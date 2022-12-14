@@ -23,10 +23,10 @@ const Header = () => {
   };
   return (
     <header>
-          <Navbar className="nav-section" variant="dark" expand="lg">
+          <Navbar className="nav-section" variant="dark" expand="md">
             <Container>
               <LinkContainer to="/">
-                <Navbar.Brand>APP</Navbar.Brand>
+                <Navbar.Brand>Online Store</Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">

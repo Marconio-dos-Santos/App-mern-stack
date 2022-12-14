@@ -28,7 +28,7 @@ const PaymentMethodScreen = () => {
     navigate('/placeorder');
   };
   return (
-    <div className='site-container'>
+    <div className='site-container mx-3'>
     <CheckoutSteps step1 step2 step3></CheckoutSteps>
     <div className="container small-container">
       <h1 className="my-3">Forma de Pagamento</h1>

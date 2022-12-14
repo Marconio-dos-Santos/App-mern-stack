@@ -60,10 +60,7 @@ return (
                                 alt={item.name}
                                 className="img-fluid rounded img-thumbnail"
                               ></img>{' '}
-                                <Link to={`/product/${item.slug}`}>{item.name}</Link>
-                            </Col>
-                            <Col md={3}>
-                              <Button
+                                <Button
                               variant="light"
                               onClick={() => updateCartHandler(item, item.quantity - 1)}
                               disabled={item.quantity === 1 }>
@@ -78,7 +75,10 @@ return (
                                 <i className="fas fa-plus-circle"></i>
                               </Button>
                             </Col>
-                            <Col md={3}>{item.price}</Col>
+                            <Col md={3}>
+                              <Link to={`/product/${item.slug}`}>{item.name}</Link>   
+                            </Col>
+                            <Col md={3}>Valor:{item.price}</Col>
                             <Col md={2}>
                               <Button
                                 onClick={() => removeItemHandler(item)}

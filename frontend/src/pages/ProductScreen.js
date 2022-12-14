@@ -76,12 +76,12 @@ const ProductScreen = () => {
     ) : error ? (
       <MessageBox variant="danger">{error}</MessageBox>
     ) : (
-      <div className="container mt-3">
+      <div className="container mt-5">
         <Row>
           <Col md={6}>
             <img className="img-large" src={product.image} alt={product.name}></img>
           </Col>
-          <Col md={6} className="d-flex flex-column justify-content-evenly">
+          <Col md={6} className="d-flex flex-column justify-content-start">
               <div>
                 <h1 className="pb-3">{product.name}</h1>
                 <Rating
@@ -89,18 +89,20 @@ const ProductScreen = () => {
                   numReviews={product.numReviews}
                 ></Rating>
                 </div>
+                <div className="divider"></div>
                 <div>
                     <Row>
                       <Col>R$:</Col>
                       <Col>{product.price.toFixed(2)}</Col>
                     </Row>
-                    <Row className="pb-3">
+                    <Row className="pb-5">
                       <Col>Status:</Col>
                       <Col>{product.countInStock > 0 ?
                       <Badge bg="success">Em Estoque</Badge>:
                       <Badge bg="danger">Sem Estoque</Badge>
                       }</Col>
                     </Row>
+                </div>
                   {product.countInStock > 0 && (
                       <div className="d-grid pb-3">
                         <Button onClick={addToCartHandler}>
@@ -109,7 +111,7 @@ const ProductScreen = () => {
                       </div>
                   )}
                   {product.description}
-                  </div>
+                  
           </Col>
         </Row>
       </div>

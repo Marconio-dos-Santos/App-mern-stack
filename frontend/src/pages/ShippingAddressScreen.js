@@ -46,7 +46,7 @@ const ShippingAddressScreen = () => {
         navigate("/payment");
     }
     return (
-      <div>
+      <div className="mx-3">
         <CheckoutSteps step1 step2></CheckoutSteps>
         <div className="container small-container">
           <h1 className="my-3">Endereço de envio</h1>

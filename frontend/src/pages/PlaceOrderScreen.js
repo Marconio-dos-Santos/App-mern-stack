@@ -79,7 +79,7 @@ const PlaceOrderScreen = () => {
     }
   }, [cart, navigate]);
   return (
-    <div>
+    <div className="mx-3">
         <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
         <h1 className='my-3'>Pedido Completo</h1>
         <Row>
