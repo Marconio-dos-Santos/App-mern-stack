@@ -18,7 +18,8 @@ import ProfileScreen from "./pages/ProfileScreen";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardScreen from "./pages/DashboardScreen";
 import AdminRoute from "./components/AdminRoute";
-
+import ProductListScreen from './pages/ProductListScreen';
+import ProductEditScreen from './pages/ProductEditScreen';
 
 function App() {
   return (
@@ -57,6 +58,22 @@ function App() {
                 element={
                   <AdminRoute>
                     <DashboardScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/product/:id"
+                element={
+                  <AdminRoute>
+                    <ProductEditScreen />
                   </AdminRoute>
                 }
               ></Route>

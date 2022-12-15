@@ -50,7 +50,7 @@ const OrderHistoryScreen = () => {
     }, [userInfo]);
     return (
       <div>
-        <h1>Order History</h1>
+        <h1>Historico de pedidos</h1>
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -60,11 +60,11 @@ const OrderHistoryScreen = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>DATE</th>
+                <th>DATA</th>
                 <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
-                <th>ACTIONS</th>
+                <th>PAGO</th>
+                <th>ENTREGUE</th>
+                <th>MAIS</th>
               </tr>
             </thead>
             <tbody>
@@ -87,7 +87,7 @@ const OrderHistoryScreen = () => {
                         navigate(`/order/${order._id}`);
                       }}
                     >
-                      Details
+                      Detalhes
                     </Button>
                   </td>
                 </tr>
