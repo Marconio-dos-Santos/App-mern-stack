@@ -5,6 +5,7 @@ import seedRouter from "./routes/seedRouter.js";
 import userRouter from "./routes/userRouter.js";
 import productRouter from "./routes/productRouter.js";
 import orderRouter from './routes/orderRouter.js';
+import uploadRouter from './routes/uploadRouter.js';
 
 dotenv.config({ path: "./config/.env" })// permite que você traga variaveis de ambiente ocultas
 
@@ -28,6 +29,7 @@ app.get('/api/keys/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
 
+app.use('/api/upload', uploadRouter);
 app.use("/api/seed", seedRouter); //"rota opcional" caso queira uma opção rapida para cadastrar usuario e alguns produtos em um novo banco de dados
 app.use("/api/products", productRouter); // rota para exibir os produtos
 app.use("/api/users", userRouter); // rota logar e criar usuario
