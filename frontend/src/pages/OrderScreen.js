@@ -12,6 +12,8 @@ import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
 import { toast } from 'react-toastify';
+import moment from 'moment';
+moment().format();
 
 function reducer(state, action) {
   switch (action.type) {
@@ -161,7 +163,7 @@ export default function OrderScreen() {
               </Card.Text>
               {order.isPaid ? (
                 <MessageBox variant="success">
-                  Paid at {order.paidAt}
+                  Pago em: {moment(order.paidAt).format("DD MM YYYY HH:mm")}
                 </MessageBox>
               ) : (
                 <MessageBox variant="danger">Não pago</MessageBox>
