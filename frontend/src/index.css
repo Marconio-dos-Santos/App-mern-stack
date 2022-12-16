@@ -64,7 +64,6 @@ main {
 .hero-banner-container{
   padding: 200px 40px;
   background-image: url(../public/images/bg-hero-banner.jpg);
-  border-radius: 15px;
   position: relative;
   line-height: 0.9; 
   width: 100%;
