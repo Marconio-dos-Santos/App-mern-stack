@@ -31,13 +31,26 @@ const reducer = (state, action) => {
     };
     case 'CREATE_FAIL':
       return { ...state, loadingCreate: false };
+    case 'DELETE_REQUEST':
+      return { ...state, loadingDelete: true, successDelete: false };
+    case 'DELETE_SUCCESS':
+      return {
+        ...state,
+        loadingDelete: false,
+        successDelete: true,
+      };
+    case 'DELETE_FAIL':
+      return { ...state, loadingDelete: false, successDelete: false };
+
+    case 'DELETE_RESET':
+      return { ...state, loadingDelete: false, successDelete: false };
     default:
       return state;
   }
 };
 
 export default function ProductListScreen() {
-  const [{ loading, error, products, loadingCreate  }, dispatch] = useReducer(reducer, {
+  const [{ loading, error, products, loadingCreate, loadingDelete, successDelete,  }, dispatch] = useReducer(reducer, {
     loading: true,
     error: '',
   });
@@ -56,8 +69,12 @@ export default function ProductListScreen() {
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {}
     };
-    fetchData();
-  }, [ userInfo]);
+    if (successDelete) {
+      dispatch({ type: 'DELETE_RESET' });
+    } else {
+      fetchData();
+    }
+  }, [ userInfo, successDelete]);
 
   const createHandler = async () => {
     if (window.confirm('Are you sure to create?')) {
@@ -81,11 +98,27 @@ export default function ProductListScreen() {
       }
     }
   };
+  const deleteHandler = async (product) => {
+    if (window.confirm('Quer mesmo deletar esse produto?')) {
+      try {
+        await axios.delete(`/api/products/${product._id}`, {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+        toast.success('Produto deletado com sucesso!');
+        dispatch({ type: 'DELETE_SUCCESS' });
+      } catch (err) {
+        toast.error(getError(error));
+        dispatch({
+          type: 'DELETE_FAIL',
+        });
+      }
+    }
+  };
   return (
     <div>
       <Row>
         <Col>
-          <h1>Products</h1>
+          <h1>Produtos</h1>
         </Col>
         <Col className="col text-end">
           <div>
@@ -97,6 +130,7 @@ export default function ProductListScreen() {
       </Row>
 
       {loadingCreate && <LoadingBox></LoadingBox>}
+      {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -129,6 +163,14 @@ export default function ProductListScreen() {
                       onClick={() => navigate(`/admin/product/${product._id}`)}
                     >
                       Edit
+                    </Button>
+                    &nbsp;
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() => deleteHandler(product)}
+                    >
+                      Delete
                     </Button>
                   </td>
                 </tr>

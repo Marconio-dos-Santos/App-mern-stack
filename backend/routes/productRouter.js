@@ -33,7 +33,7 @@ router.post(
     })
   );
   
-  router.put(
+router.put(
 '/:id',
 isAuth,
 isAdmin,
@@ -56,7 +56,20 @@ expressAsyncHandler(async (req, res) => {
     }
 })
 );
-
+router.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      await product.remove();
+      res.send({ message: 'Product Deleted' });
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+);
 router.get(
     '/admin',
     isAuth,
