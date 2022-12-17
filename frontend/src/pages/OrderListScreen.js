@@ -52,7 +52,7 @@ export default function OrderListScreen() {
 
   return (
     <div>
-      <h1>Orders</h1>
+      <h1>Pedidos</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -61,28 +61,22 @@ export default function OrderListScreen() {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+              <th>Usuario</th>
+              <th>Pedido</th>
+              <th>Pago</th>
+              <th>Eviado</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
               <tr key={order._id}>
-                <td>{order._id}</td>
                 <td>{order.user ? order.user.name : 'DELETED USER'}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice.toFixed(2)}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                <td>{order.isPaid ? 'Sim' : 'Não'}</td>
                 <td>
                   {order.isDelivered
-                    ? order.deliveredAt.substring(0, 10)
-                    : 'No'}
+                    ? 'Sim'
+                    : 'Não'}
                 </td>
                 <td>
                   <Button
@@ -92,7 +86,7 @@ export default function OrderListScreen() {
                       navigate(`/order/${order._id}`);
                     }}
                   >
-                    Details
+                    Mais
                   </Button>
                 </td>
               </tr>

@@ -50,7 +50,7 @@ const OrderHistoryScreen = () => {
     }, [userInfo]);
     return (
       <div>
-        <h1>Historico de pedidos</h1>
+        <h1>Historico</h1>
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -59,25 +59,22 @@ const OrderHistoryScreen = () => {
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>DATA</th>
-                <th>TOTAL</th>
-                <th>PAGO</th>
-                <th>ENTREGUE</th>
-                <th>MAIS</th>
+                <th>Data</th>
+                <th>Total</th>
+                <th>Pago</th>
+                <th>Enviado</th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice.toFixed(2)}</td>
-                  <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                  <td>{order.isPaid ? 'Sim' : 'Não'}</td>
                   <td>
                     {order.isDelivered
-                      ? order.deliveredAt.substring(0, 10)
-                      : 'No'}
+                      ? 'Sim'
+                      : 'Não'}
                   </td>
                   <td>
                     <Button

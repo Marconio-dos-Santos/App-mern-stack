@@ -5,6 +5,7 @@ import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 import axios from 'axios';
+import LoadingBox from '../components/LoadingBox';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,6 +34,10 @@ const reducer = (state, action) => {
   
     const submitHandler = async (e) => {
       e.preventDefault();
+      if (password !== confirmPassword) {
+        toast.error('As senhas não conferem');
+        return;
+      }
       try {
         const { data } = await axios.put(
           '/api/users/profile',
@@ -64,7 +69,7 @@ const reducer = (state, action) => {
         <h1 className="my-3">User Profile</h1>
         <form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="name">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Nome</Form.Label>
             <Form.Control
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -81,21 +86,22 @@ const reducer = (state, action) => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Senha</Form.Label>
             <Form.Control
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="password">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>Confirmar Senha</Form.Label>
             <Form.Control
               type="password"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </Form.Group>
           <div className="mb-3">
-            <Button type="submit">Update</Button>
+            <Button type="submit">Atualizar</Button>
+            {loadingUpdate && <LoadingBox></LoadingBox>}
           </div>
         </form>
       </div>

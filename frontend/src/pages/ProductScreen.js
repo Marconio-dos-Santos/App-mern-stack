@@ -81,7 +81,7 @@ const ProductScreen = () => {
           <Col md={6}>
             <img className="img-large" src={product.image} alt={product.name}></img>
           </Col>
-          <Col md={6} className="d-flex flex-column justify-content-start">
+          <Col md={6} className="d-flex flex-column justify-content-between">
               <div>
                 <h1 className="pb-3">{product.name}</h1>
                 <Rating
@@ -92,7 +92,7 @@ const ProductScreen = () => {
                 <div className="divider"></div>
                 <div>
                     <Row>
-                      <Col>R$:</Col>
+                      <Col>Preço:</Col>
                       <Col>{product.price.toFixed(2)}</Col>
                     </Row>
                     <Row className="pb-5">

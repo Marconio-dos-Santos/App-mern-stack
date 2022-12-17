@@ -146,7 +146,7 @@ const navigate = useNavigate();
       ) : (
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="name">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Nome</Form.Label>
             <Form.Control
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -162,7 +162,7 @@ const navigate = useNavigate();
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="name">
-            <Form.Label>Price</Form.Label>
+            <Form.Label>Preço</Form.Label>
             <Form.Control
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -170,7 +170,7 @@ const navigate = useNavigate();
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="image">
-            <Form.Label>Image File</Form.Label>
+            <Form.Label>Imagem</Form.Label>
             <Form.Control
               value={image}
               onChange={(e) => setImage(e.target.value)}
@@ -178,12 +178,12 @@ const navigate = useNavigate();
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="imageFile">
-            <Form.Label>Upload File</Form.Label>
+            <Form.Label>Upload</Form.Label>
             <Form.Control type="file" onChange={uploadFileHandler} />
             {loadingUpload && <LoadingBox></LoadingBox>}
           </Form.Group>
           <Form.Group className="mb-3" controlId="category">
-            <Form.Label>Category</Form.Label>
+            <Form.Label>Categoria</Form.Label>
             <Form.Control
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -191,7 +191,7 @@ const navigate = useNavigate();
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="brand">
-            <Form.Label>Brand</Form.Label>
+            <Form.Label>Marca</Form.Label>
             <Form.Control
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
@@ -199,7 +199,7 @@ const navigate = useNavigate();
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="countInStock">
-            <Form.Label>Count In Stock</Form.Label>
+            <Form.Label>Estoque</Form.Label>
             <Form.Control
               value={countInStock}
               onChange={(e) => setCountInStock(e.target.value)}
@@ -207,7 +207,7 @@ const navigate = useNavigate();
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="description">
-            <Form.Label>Description</Form.Label>
+            <Form.Label>Descrição</Form.Label>
             <Form.Control
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -216,7 +216,7 @@ const navigate = useNavigate();
           </Form.Group>
           <div className="mb-3">
           <Button disabled={loadingUpdate} type="submit">
-              Update
+              Atualizar
             </Button>
             {loadingUpdate && <LoadingBox></LoadingBox>}
           </div>

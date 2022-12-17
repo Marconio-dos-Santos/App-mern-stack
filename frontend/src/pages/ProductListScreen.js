@@ -141,18 +141,18 @@ export default function ProductListScreen() {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>NOME</th>
-                <th>PREÇO</th>
-                <th>CATEGORIA</th>
-                <th>MARCA</th>
-                <th>DETALHES</th>
+                <th>Nome</th>
+                <th>R$</th>
+                <th>Cat</th>
+                <th>Marca</th>
+                <th>Mais</th>
               </tr>
             </thead>
             <tbody>
               {products.map((product) => (
                 <tr key={product._id}>
-                  <td>{product._id}</td>
-                  <td>{product.name}</td>
+                  <td>{product._id.slice(-6)}</td>
+                  <td>{product.name.split(" ").slice(1)}</td>
                   <td>{product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>

@@ -42,7 +42,7 @@ function Product({ product }) {
           <Card.Title>{product.name}</Card.Title>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text className="product-price">${product.price}</Card.Text>
+        <Card.Text className="product-price">R$: {product.price.toFixed(2)}</Card.Text>
         {product.countInStock === 0 ? <Button variant="light" disabled >Sem estoque</Button>
         :
         <Button onClick={() => addToCartHandler(product)}>

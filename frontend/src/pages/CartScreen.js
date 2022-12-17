@@ -78,7 +78,7 @@ return (
                             <Col md={3}>
                               <Link to={`/product/${item.slug}`}>{item.name}</Link>   
                             </Col>
-                            <Col md={3}>Valor:{item.price}</Col>
+                            <Col md={3}>Valor: {item.price.toFixed(2)}</Col>
                             <Col md={2}>
                               <Button
                                 onClick={() => removeItemHandler(item)}
@@ -102,7 +102,7 @@ return (
                       <h3>
                         Subtotal ({cartItems.reduce((a,c) => a + c.quantity, 0)}{''}
                         itens) : $
-                        {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
+                        {cartItems.reduce((a, c) => a + c.price * c.quantity, 0).toFixed(2)}
                       </h3>
                     </ListGroup.Item>
                     <ListGroup.Item>
