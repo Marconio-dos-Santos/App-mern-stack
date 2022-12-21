@@ -80,7 +80,6 @@ function reducer(state, action) {
     
 }
 
-
 //componente para passar dados de forma global
 export function StoreProvider(props) {
     const [state, dispatch] = useReducer(reducer, initialState);

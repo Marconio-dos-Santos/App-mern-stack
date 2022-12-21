@@ -39,8 +39,7 @@ const PlaceOrderScreen = () => {
     cart.itemsPrice = round2(
     cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0));
     cart.shippingPrice = cart.itemsPrice > 100 ? round2(0) : round2(10);
-    cart.taxPrice = round2(0.15 * cart.itemsPrice);
-    cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
+    cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
 
     const placeOrderHandler = async () => {
         try {
@@ -148,10 +147,6 @@ const PlaceOrderScreen = () => {
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Row>
-                    <Col>Juros</Col>
-                    <Col>R$: {cart.taxPrice.toFixed(2)}</Col>
-                  </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>

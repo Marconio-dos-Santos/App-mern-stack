@@ -78,7 +78,7 @@ return (
                             <Col md={3}>
                               <Link to={`/product/${item.slug}`}>{item.name}</Link>   
                             </Col>
-                            <Col md={3}>Valor: {item.price.toFixed(2)}</Col>
+                            <Col md={3}> {item.price.toFixed(2)}</Col>
                             <Col md={2}>
                               <Button
                                 onClick={() => removeItemHandler(item)}
